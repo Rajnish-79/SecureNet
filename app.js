@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-// const Listing = require("./models/listing.js");
+const Guard = require("./src/models/Guard.js");
 const path = require("path");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
@@ -10,9 +10,12 @@ const connectDB = require("./src/config/db.js");
 const methodOverride = require("method-override");
 const ejsMate =require("ejs-mate");
 
-// const User = require('./src/models/user.js');
+
 
 const PORT = process.env.PORT || 8080;
+
+dotenv.config();
+connectDB();
 
 
 
@@ -49,7 +52,18 @@ app.get("/guards" ,(req,res) =>{
 app.get("/contact" ,(req,res) =>{
     res.render("./index/contact.ejs");
 });
+app.get("/allGuard",async(req,res) =>{
+    const allGuard = await Guard.find({});
+    res.render("./index/allGuard.ejs",{allGuard});
+});
+// login
 
+app.get("/login",(req,res)=>{
+    res.render("./index/login.ejs");
+});
+app.get("/loginHelp",(req,res)=>{
+    res.render("./index/loginHelp.ejs");
+});
 app.listen( PORT, ()=>{
     console.log(`Server is listening to port ${PORT} `);
 });

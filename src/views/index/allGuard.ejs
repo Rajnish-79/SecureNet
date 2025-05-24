@@ -1,0 +1,38 @@
+<% layout("./layouts/boilerplate.ejs") %>
+<body class="sub_page">
+  <!-- team section -->
+
+  <section class="team_section layout_padding">
+    <div class="container">
+     
+        <div class="row">
+            <% for(let data of allGuard){%>
+                <div class="col-md-4 col-sm-6 mx-auto ">
+                    <div class="box">
+                        <div class="img-box">
+                            <img src="<%=data.image%>" alt="Not Found">
+                        </div>
+                        <div class="detail-box">
+                            <p>
+                                <h5><b>Name:</b> <%=data.name%></h5>
+                                <h6><b>Type:</b><%=data.experties%></h6>
+                                <h6><b>Phone No:</b><%=data.phone%></h6>
+                                <h6><b>Address:</b><%=data.address%></h6>
+                                <h6><b>City:</b><%=data.city%></h6>
+                                
+                            </p>
+                            
+                        </div>
+                    </div>
+                </div>
+
+            <%}%>
+            
+            
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- end team section -->
+</body>
